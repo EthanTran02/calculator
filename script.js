@@ -18,11 +18,11 @@ function divide(num1, num2) {
 function operation(firstNum, lastNum, operator) {
     if (operator == `+`) {
         return add(firstNum, lastNum)
-    } else if (operator == `subtract`) {
+    } else if (operator == `-`) {
         return subtract(firstNum,lastNum)
-    } else if (operator == `multiply`) {
+    } else if (operator == `*`) {
         return multiply(firstNum, lastNum) 
-    } else if (operator == `divide`) {
+    } else if (operator == `/`) {
         return divide(firstNum, lastNum)
     } else {
         return console.log(`please enter a valid operator!`)
