@@ -37,39 +37,60 @@ let digitButton = document.querySelectorAll('.digit')
 let operatorButton = document.querySelectorAll(`.operator`)
 let result = document.querySelector('#result')
 let equalButton = document.querySelector(`#equal`)
+let clearButton = document.querySelector('#clear') 
+
 
 
 operatorButton.forEach(function(button) {
     button.addEventListener('click', function() {
-        operator = button.textContent
-        console.log(`operator up date ${operator}`)
-        console.log(`-----`)
-        result.textContent = ''
+        if(operator == 0) {
+            operator = button.textContent
+        } else {
+            let equal = operation(firstNum, lastNum, operator)
+            result.textContent = equal 
+            firstNum = parseInt(result.textContent)
+            lastNum = 0
+            operator = button.textContent
+        }
+        
     })
 })
-
-
 
 digitButton.forEach(function(button) {
     button.addEventListener('click', function() {
         if (operator == 0 ) {
             firstNum = parseInt(result.textContent += button.textContent)
             console.log(`in first`)
-            console.log(`first num: ${firstNum}`)
-            console.log(operator)
+            console.log(`${firstNum}`)
             console.log(`-----`)
         } else {
-            lastNum = parseInt(result.textContent += button.textContent)
-            console.log(`in last`)
-            console.log(`last num: ${lastNum}`)
-            console.log(operator)
-            console.log(`-----`)
-        }
-    })  
-})
+            if(lastNum == 0) {
+                result.textContent = ''
+                lastNum = parseInt(result.textContent += button.textContent)
+                console.log(`in last if`)
+                console.log(`${lastNum}`)
+                console.log(`-----`)
+            } else {
+                lastNum = parseInt(result.textContent += button.textContent)
+                console.log(`in last else`)
+                console.log(`${lastNum}`)
+                console.log(`-----`)
+            }
+    } 
+})})
 
 equalButton.addEventListener('click', function() {
     let equal = operation(firstNum, lastNum, operator)
     result.textContent = equal
 })
 
+clearButton.addEventListener('click', function() {
+    firstNum = 0
+    lastNum = 0
+    operator = ''
+    result.textContent = ''
+    console.log(firstNum)
+    console.log(lastNum)
+    console.log(operator)
+    console.log(`-------`)
+})
