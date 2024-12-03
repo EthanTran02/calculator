@@ -64,21 +64,12 @@ digitButton.forEach(function(button) {
     button.addEventListener('click', function() {
         if (operator == 0) {
             firstNum = parseInt(result.textContent += button.textContent)
-            console.log(`in first`)
-            console.log(`${firstNum}`)
-            console.log(`-----`)
         } else {
             if(lastNum == 0) {
                 result.textContent = ''
                 lastNum = parseInt(result.textContent += button.textContent)
-                console.log(`in last if`)
-                console.log(`${lastNum}`)
-                console.log(`-----`)
             } else {
                 lastNum = parseInt(result.textContent += button.textContent)
-                console.log(`in last else`)
-                console.log(`${lastNum}`)
-                console.log(`-----`)
             }
     } 
 })})
@@ -99,10 +90,6 @@ equalButton.addEventListener('click', function() {
 clearButton.addEventListener('click', function() {
     firstNum = 0
     lastNum = 0
-    operator = ''
+    operator = 0
     result.textContent = ''
-    console.log(firstNum)
-    console.log(lastNum)
-    console.log(operator)
-    console.log(`-------`)
 })
