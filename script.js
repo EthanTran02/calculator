@@ -47,7 +47,11 @@ operatorButton.forEach(function(button) {
             operator = button.textContent
         } else {
             let equal = operation(firstNum, lastNum, operator)
-            result.textContent = equal 
+            if (Number.isInteger(equal)) {
+                result.textContent = equal
+            } else {
+                result.textContent = equal.toFixed(1)
+            }
             firstNum = parseInt(result.textContent)
             lastNum = 0
             operator = button.textContent
@@ -58,7 +62,7 @@ operatorButton.forEach(function(button) {
 
 digitButton.forEach(function(button) {
     button.addEventListener('click', function() {
-        if (operator == 0 ) {
+        if (operator == 0) {
             firstNum = parseInt(result.textContent += button.textContent)
             console.log(`in first`)
             console.log(`${firstNum}`)
@@ -80,8 +84,16 @@ digitButton.forEach(function(button) {
 })})
 
 equalButton.addEventListener('click', function() {
-    let equal = operation(firstNum, lastNum, operator)
-    result.textContent = equal
+    if (firstNum == 0 || lastNum == 0) {
+        alert('please enter valid operator!')
+    } else {
+        let equal = operation(firstNum, lastNum, operator)
+        if (Number.isInteger(equal)) {
+            result.textContent = equal
+        } else {
+            result.textContent = equal.toFixed(1)
+        }
+    }
 })
 
 clearButton.addEventListener('click', function() {
